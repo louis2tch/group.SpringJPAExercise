@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/">Home</a>
+<form action="/addresses/addAddress" method="post">
+
+    <table>
+        <tr >
+            <td>Address One</td>
+            <td ><input type="text" name="addressOne"></td>
+        </tr>
+        <tr >
+            <td>Address two</td>
+            <td ><input type="text" name="addressTwo"></td>
+        </tr>
+        <tr >
+            <td>Apt Number</td>
+            <td ><input type="text" name="aptNum"></td>
+        </tr>
+        <tr >
+            <td>City</td>
+            <td ><input type="text" name="city"></td>
+        </tr>
+        <tr >
+            <td>State</td>
+            <td ><input type="text" name="state"></td>
+        </tr>
+        <tr >
+            <td>Zip</td>
+            <td ><input type="text" name="zip"></td>
+        </tr>
+        <tr >
+            <td>Zip Four</td>
+            <td ><input type="text" name="zipFour"></td>
+        </tr>
+        <tr >
+            <td>County</td>
+            <td ><input type="text" name="county"></td>
+        </tr>
+        <tr >
+            <td>Country</td>
+            <td ><input type="text" name="country"></td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit">
+</form>
+
+<hr>
+<table border="1" cellspacing="0" cellpadding="3" >
+    <tr >
+        <td>Address One</td>
+        <td >Address two</td>
+        <td>Apt Number</td>
+        <td >City</td>
+        <td >State</td>
+        <td>Zip</td>
+        <td>Zip four</td>
+        <td >County</td>
+        <td >Country</td>
+    </tr>
+    <tr th:each="address : ${addresses}">
+        <td th:text="${address.addressOne}"></td>
+        <td th:text="${address.addressTwo}"></td>
+        <td th:text="${address.aptNum}"></td>
+        <td th:text="${address.city}"></td>
+        <td th:text="${address.zip}"></td>
+        <td th:text="${address.zipFour}"></td>
+        <td th:text="${address.state}"></td>
+        <td th:text="${address.county}"></td>
+        <td th:text="${address.country}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

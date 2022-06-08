@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/">Home</a>
+<form action="/projects/addProject" method="post">
+    <table>
+        <tr>
+            <td>Project Name</td>
+            <td><input type="text" name="projectName"></td>
+        </tr>
+
+        <tr>
+            <td>Employees</td>
+            <td><select name="employeesId" multiple>
+                <option th:each="employee :${employees}" th:value="${employee.id}"
+                        th:text="${employee.suffix}+ ' ' + ${employee.firstName}+ ' ' +${employee.middleName}+ ' ' + ${employee.lastName}"></option>
+            </select></td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Submit">
+</form>
+<hr>
+
+<table> <!--
+    <tr th:each="employee: ${employees}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.middleName}"></td>
+        <td th:text="${employee.firstName}"></td>
+        <td th:text="${employee.suffix}"></td> -->
+        <!--
+            <td ><a th:href="@{/employees/}+${employee.id}" th:text="${employee.lastName}"></a></td>
+            <td ><a th:href=" '/employees/' + ${employee.id}") th:text="${employee.lastName}"></a></td>
+
+        <td ><a th:href="@{/employees/{id}(id=${employee.id})}" th:text="${employee.lastName}"></a></td>
+    </tr>-->
+</table>
+</body>
+</html>

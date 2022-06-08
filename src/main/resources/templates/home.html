@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<li><a href="/addresses"><strong>Manage Addresses</strong></a></li>
+<li><a href="/employees"><strong>Manage Employees</strong></a></li>
+<hr>
+<table>
+    <tr th:each="employee: ${employees}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.middleName}"></td>
+        <td th:text="${employee.firstName}"></td>
+        <td th:text="${employee.suffix}"></td>
+        <!--
+            <td ><a th:href="@{/employees/}+${employee.id}" th:text="${employee.lastName}"></a></td>
+            <td ><a th:href=" '/employees/' + ${employee.id}") th:text="${employee.lastName}"></a></td>
+        -->
+        <td ><a th:href="@{/employees/{id}(id=${employee.id})}" th:text="${employee.lastName}"></a></td>
+    </tr>
+</table>
+
+</body>
+</html>

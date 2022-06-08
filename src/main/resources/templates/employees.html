@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/">Home</a>
+
+<form action="/employees/addEmployee" method="post">
+    <table>
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" name="firstName"></td>
+        </tr>
+        <tr>
+            <td>Middle Name</td>
+            <td><input type="text" name="middleName"></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td><input type="text" name="lastName"></td>
+        </tr>
+        <tr>
+            <td>Suffix</td>
+            <td><input type="text" name="suffix"></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><select name="addressId" >
+                <option th:each="address :${addresses}" th:value="${address.id}"
+                        th:text="${address.addressOne}+ ' ' +${address.addressTwo}+ ' ' + ${address.aptNum}+ ' ' + ${address.city}+ '...'"></option>
+            </select></td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Submit">
+</form>
+<hr>
+<table>
+    <tr th:each="employee: ${employees}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.middleName}"></td>
+        <td th:text="${employee.firstName}"></td>
+        <td th:text="${employee.suffix}"></td>
+        <!--
+            <td ><a th:href="@{/employees/}+${employee.id}" th:text="${employee.lastName}"></a></td>
+            <td ><a th:href=" '/employees/' + ${employee.id}") th:text="${employee.lastName}"></a></td>
+        -->
+        <td ><a th:href="@{/employees/{id}(id=${employee.id})}" th:text="${employee.lastName}"></a></td>
+    </tr>
+</table>
+</body>
+</html>
