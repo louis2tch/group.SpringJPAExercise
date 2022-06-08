@@ -27,8 +27,10 @@ public class ProjectController {
 
     @RequestMapping("")
     public String AddProject(Model modelProj, Model modelEmp){
+
         modelProj.addAttribute("projects",projectRepo.findAll());
         modelEmp.addAttribute("employees",employeeRepo.findAll());
+        //modelEmp.addAttribute("employees",employeeRepo.findAllById());
         return "projects";
     }
 
@@ -57,19 +59,19 @@ public class ProjectController {
 
         //System.out.println(Arrays.toString(projectToAdd.getEmployees().toArray()));
 
-//       if(employeeS.length == 1)
-//            projectToAdd = new Project(projectName, employeeList.get(0));
-//        if(employeeS.length == 2)
-//            projectToAdd = new Project(projectName, employeeList.get(0), employeeList.get(1));
-//        if(employeeS.length == 3)
-//            projectToAdd = new Project(projectName, employeeList.get(0), employeeList.get(1), employeeList.get(2));
-//        if(employeeS.length == 4)
-//            projectToAdd = new Project(projectName, employeeList.get(0), employeeList.get(1), employeeList.get(2), employeeList.get(3));
-//        if(employeeS.length == 5)
-//            projectToAdd = new Project(projectName, employeeList.get(0), employeeList.get(1), employeeList.get(2), employeeList.get(3), employeeList.get(4));
-            for(int i=0;i<employeeList.size();i++){
-                projectToAdd.addEmployee(employeeList.get(i));
-            }
+       if(employeeS.length == 1)
+            projectToAdd = new Project(projectName, employeeList.get(0));
+        if(employeeS.length == 2)
+            projectToAdd = new Project(projectName, employeeList.get(0), employeeList.get(1));
+        if(employeeS.length == 3)
+            projectToAdd = new Project(projectName, employeeList.get(0), employeeList.get(1), employeeList.get(2));
+        if(employeeS.length == 4)
+            projectToAdd = new Project(projectName, employeeList.get(0), employeeList.get(1), employeeList.get(2), employeeList.get(3));
+        if(employeeS.length == 5)
+            projectToAdd = new Project(projectName, employeeList.get(0), employeeList.get(1), employeeList.get(2), employeeList.get(3), employeeList.get(4));
+//            for(int i=0;i<employeeList.size();i++){
+//                projectToAdd.addEmployee(employeeList.get(i));
+//            }
         projectRepo.save(projectToAdd);
         return "redirect:/projects";//+ employeesId+'#'+employeeS.length+"#"+employeeList.get(0).getFirstName()
     }

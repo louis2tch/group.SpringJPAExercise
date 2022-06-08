@@ -7,7 +7,7 @@
 <body>
 <a href="/">Home</a>
 <form action="/projects/addProject" method="post">
-    <table>
+    <table >
         <tr>
             <td>Project Name</td>
             <td><input type="text" name="projectName"></td>
@@ -25,19 +25,25 @@
     <input type="submit" value="Submit">
 </form>
 <hr>
+<table border="1" cellpadding="3" cellspacing="0">
+    <tr th:each="project :${projects}">
+        <td th:text="${project.projectName}">
+            1
+        </td>
+        <td >  Employees:<!--
+            <table>
+                <tr th:each="employee: ${employees.findAll()}">
+                    <td th:text="${employee.id}"></td>
+                    <td th:text="${employee.middleName}"></td>
+                    <td th:text="${employee.firstName}"></td>
+                    <td th:text="${employee.suffix}"></td>
 
-<table> <!--
-    <tr th:each="employee: ${employees}">
-        <td th:text="${employee.id}"></td>
-        <td th:text="${employee.middleName}"></td>
-        <td th:text="${employee.firstName}"></td>
-        <td th:text="${employee.suffix}"></td> -->
-        <!--
-            <td ><a th:href="@{/employees/}+${employee.id}" th:text="${employee.lastName}"></a></td>
-            <td ><a th:href=" '/employees/' + ${employee.id}") th:text="${employee.lastName}"></a></td>
-
-        <td ><a th:href="@{/employees/{id}(id=${employee.id})}" th:text="${employee.lastName}"></a></td>
-    </tr>-->
+                    <td ><a th:href="'/employees/' + ${employee.id} " th:text="${employee.lastName}"></a></td>
+                 </tr>
+            </table>-->
+        </td>
+    </tr>
 </table>
+
 </body>
 </html>
